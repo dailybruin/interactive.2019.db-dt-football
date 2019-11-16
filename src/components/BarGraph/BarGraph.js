@@ -90,12 +90,19 @@ class BarGraph extends React.Component {
     ));
     return (
       <>
-        {/* <div className={css`
-                        width: 70%;
-                        margin: auto;
-                    `}>
-                        
-                    </div> */}
+        <div
+          className={css`
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 45px;
+            text-align: center;
+            margin-bottom: 30px;
+          `}
+        >
+          Here’s where your allegiance lies.
+        </div>
         <div
           className={css`
             width: 70%;
@@ -158,6 +165,7 @@ class BarGraph extends React.Component {
               font-size: 28px;
               width: 100%;
               text-align: center;
+              margin-top: 20px;
             `}
           >
             Who wins?
