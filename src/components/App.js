@@ -7,7 +7,7 @@ import { Video } from "./Video";
 import { Navbar } from "./Navbar";
 import { Questions } from "./Questions";
 
-import BarGraph from "./BarGraph/BarGraph";
+import { BarGraph } from "./BarGraph";
 import { Timeline } from "./Timeline";
 
 const questions = [
@@ -82,8 +82,8 @@ export class App extends React.Component {
   render() {
     return (
       <>
-        {/* {this.props.visited || <LandingPage />} */}
-        <Navbar />
+        <Navbar colorswitch={false} sections={["Test1", "Test2", "Test3"]} />
+        <Questions questions={questions} />
         <BarGraph />
 
         <SubHeading text="Here's where your allegiance lies." />
@@ -93,7 +93,6 @@ export class App extends React.Component {
         <SubHeading text="Video Title." />
         <Video />
         <SubHeading text="Read more here." />
-        <Questions questions={questions} />
         <Timeline
           cards={timelineCards}
           colors={["#CD6969", "#F7CD6A", "#83B8D7"]}

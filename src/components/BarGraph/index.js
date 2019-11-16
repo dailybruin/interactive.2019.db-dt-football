@@ -1,5 +1,5 @@
 import React from "react";
-import Bar from "../Bar/Bar";
+import { Bar } from "../Bar";
 import { css } from "emotion";
 
 const temp_data2 = [
@@ -29,7 +29,7 @@ const temp_data2 = [
   }
 ];
 
-class BarGraph extends React.Component {
+export class BarGraph extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,7 +41,7 @@ class BarGraph extends React.Component {
 
   componentDidMount() {
     fetch(
-      "http://db-dt-football-backend.db-dt-football-backend.primary.dailybruin.com:14657/getstatistics?fbclid=IwAR12ICtIzy8qjRyk0IDlRgJkQPmcVRbd1BZR46Eto2H-lm1KLywjOpBspSs"
+      "http://db-dt-football-backend.db-dt-football-backend.primary.dailybruin.com:14657/getstatistics"
     )
       .then(response => response.json())
       .then(data =>
@@ -236,4 +236,3 @@ class BarGraph extends React.Component {
     );
   }
 }
-export default BarGraph;

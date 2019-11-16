@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "emotion";
 
-class Bar extends React.Component {
+export class Bar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,4 +46,3 @@ class Bar extends React.Component {
     );
   }
 }
-export default Bar;
