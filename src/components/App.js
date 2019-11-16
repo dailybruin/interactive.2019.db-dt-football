@@ -7,6 +7,8 @@ import { Video } from "./Video";
 import { Navbar } from "./Navbar";
 import { Questions } from "./Questions";
 
+import BarGraph from "./BarGraph/BarGraph";
+
 const questions = [
   {
     question:
@@ -39,6 +41,7 @@ export class App extends React.Component {
         <Navbar />
 
         <SubHeading text="Here's where your allegiance lies." />
+        {/* <Choose/> */}
         <SubHeading text="Here's how it all came together." />
         <PhotoGallery />
         <SubHeading text="Video Title." />
@@ -46,6 +49,7 @@ export class App extends React.Component {
         <SubHeading text="Read more here." />
         <Questions questions={questions} />
         <ArticleGrid />
+        <BarGraph />
       </>
     );
   }
