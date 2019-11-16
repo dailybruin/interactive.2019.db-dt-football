@@ -6,8 +6,11 @@ export default function ArticleCard({ article }) {
   return (
     <article
       className={css`
-        border: 15px solid ${colors.red};
-        background-color: ${colors.red};
+        border: ${props => {
+          if (props.school == "USC") return "50px solid", colors.red;
+          if (props.school == "UCLA") return "50px solid", colors.blue;
+        }}
+        background-color: "white";
         padding: 3em;
       `}
     >
@@ -20,7 +23,7 @@ export default function ArticleCard({ article }) {
         `}
       >
         <h2 className="section-header">
-          {article.italics ? <em>{article.header}</em> : article.header}
+          {article.italics ? <em>{article.section}</em> : article.section}
         </h2>
         <img
           src={article.image}

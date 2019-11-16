@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "emotion";
-import { SectionUCLA } from "./SectionUCLA";
-import { SectionUSC } from "./SectionUSC";
+import { Section } from "./Section";
+// import { SectionUSC } from "./SectionUSC";
 import { colors } from "../Shared/colors";
 import { Header } from "./Header";
 
@@ -32,9 +32,10 @@ export class ArticleGrid extends React.Component {
     )
       .then(response => response.json())
       .then(data => {
-        let sections = data.data["data.aml"].sections;
+        let papers = data.data["data.aml"].papers;
+        console.log(papers);
         this.setState({
-          data: sections
+          data: papers
         });
       });
   }
@@ -70,13 +71,15 @@ export class ArticleGrid extends React.Component {
               grid-template-columns: repeat(2, 1fr);
             `}
           >
-            <SectionUCLA
-              key={this.state.data[0].section}
+            <Section
+              key={this.state.data[0].paper}
               data={this.state.data[0]}
+              schoolname={"UCLA"}
             />
-            <SectionUSC
-              key={this.state.data[1].section}
+            <Section
+              key={this.state.data[1].paper}
               data={this.state.data[1]}
+              schoolname={"USC"}
             />
           </div>
         )}
