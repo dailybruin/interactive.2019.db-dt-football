@@ -1,19 +1,20 @@
 import React from "react";
 import { css } from "emotion";
 import { colors } from "../Shared/colors";
+import styled from "styled-components";
 
-export default function ArticleCard({ article }) {
+const Article = styled("article")`
+border: ${props => {
+  if (props.school == "USC") return "50px solid " + colors.red;
+  if (props.school == "UCLA") return "50px solid " + colors.blue;
+}}
+  background-color: "white";
+  padding: 3em;
+`;
+
+export default function ArticleCard({ article, school }) {
   return (
-    <article
-      className={css`
-        border: ${props => {
-          if (props.school == "USC") return "50px solid", colors.red;
-          if (props.school == "UCLA") return "50px solid", colors.blue;
-        }}
-        background-color: "white";
-        padding: 3em;
-      `}
-    >
+    <Article school={school}>
       <a
         href={article.link}
         className={css`
@@ -46,6 +47,6 @@ export default function ArticleCard({ article }) {
           </div>
         ) : null}
       </a>
-    </article>
+    </Article>
   );
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import { css } from "emotion";
 import { Section } from "./Section";
-// import { SectionUSC } from "./SectionUSC";
 import { colors } from "../Shared/colors";
 import { Header } from "./Header";
 
