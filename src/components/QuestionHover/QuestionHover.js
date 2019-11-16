@@ -59,23 +59,26 @@ class QuestionHover extends React.Component {
             `}
           >
             {this.props.question_num}
-          </div>
-          <div
-            className={css`
-              width: 300px;
-              position: absolute;
-              top: 35px;
-              border-radius: 5px;
-              border: 2px solid black;
-              font-weight: normal;
-              font-size: 18px;
-              background: white;
-              z-index: 4;
-              pointer-events: none;
-              display: ${this.state.hover === true ? "inline-block" : "none"};
-            `}
-          >
-            {this.props.question}
+            <div
+              className={css`
+                width: 300px;
+                padding: 5px 20px;
+                top: 35px;
+                left: -120px;
+                position: absolute;
+                border-radius: 5px;
+                border: 2px solid black;
+                font-weight: normal;
+                font-size: 18px;
+                background: white;
+                z-index: 4;
+                pointer-events: none;
+                color: black;
+                display: ${this.state.hover === true ? "block" : "none"};
+              `}
+            >
+              {this.props.question}
+            </div>
           </div>
         </div>
         <Bar
