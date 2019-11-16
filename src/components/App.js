@@ -6,8 +6,8 @@ import { SubHeading } from "./SubHeading";
 import { Video } from "./Video";
 import { Navbar } from "./Navbar";
 import { Questions } from "./Questions";
-
 import BarGraph from "./BarGraph/BarGraph";
+import { Timeline } from "./Timeline";
 
 const questions = [
   {
@@ -32,22 +32,72 @@ const questions = [
   }
 ];
 
+const timelineCards = [
+  {
+    img:
+      "https://dailybruin.com/images/2019/11/web.ns_.joebiden.KH_-640x466.jpg",
+    blurb:
+      "this thing happened and it was really cool thi thing happened and it was really cool this thing happened and it was really cool this thing really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool happened",
+    year: "2015"
+  },
+  {
+    img:
+      "https://dailybruin.com/images/2019/11/web.ns_.joebiden.KH_-640x466.jpg",
+    blurb:
+      "this thing happened and it was really cool thi thing happened and it was really cool this thing happened and it was really cool this thing really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool happened",
+    year: "2015"
+  },
+  {
+    img:
+      "https://dailybruin.com/images/2019/11/web.ns_.joebiden.KH_-640x466.jpg",
+    blurb:
+      "this thing happened and it was really cool thi thing happened and it was really cool this thing happened and it was really cool this thing really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool happened",
+    year: "2015"
+  },
+  {
+    img:
+      "https://dailybruin.com/images/2019/11/web.ns_.joebiden.KH_-640x466.jpg",
+    blurb:
+      "this thing happened and it was really cool thi thing happened and it was really cool this thing happened and it was really cool this thing really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool happened",
+    year: "2015"
+  },
+  {
+    img:
+      "https://dailybruin.com/images/2019/11/web.ns_.joebiden.KH_-640x466.jpg",
+    blurb:
+      "this thing happened and it was really cool thi thing happened and it was really cool this thing happened and it was really cool this thing really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool happened",
+    year: "2015"
+  },
+  {
+    img:
+      "https://dailybruin.com/images/2019/11/web.ns_.joebiden.KH_-640x466.jpg",
+    blurb:
+      "this thing happened and it was really cool thi thing happened and it was really cool this thing happened and it was really cool this thing really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool happened",
+    year: "2015"
+  }
+];
+
 export class App extends React.Component {
   render() {
     return (
       <>
-        {/* {this.props.visited || <LandingPage />} */}
         <Navbar />
+
+        <Questions questions={questions} />
+        <SubHeading text="Here's where your allegiance lies." />
         <BarGraph />
 
-        <SubHeading text="Here's where your allegiance lies." />
-        {/* <Choose/> */}
         <SubHeading text="Here's how it all came together." />
-        <PhotoGallery />
+        <Timeline
+          cards={timelineCards}
+          colors={["#CD6969", "#F7CD6A", "#83B8D7"]}
+        />
+
         <SubHeading text="Video Title." />
         <Video />
+
         <SubHeading text="Read more here." />
-        <Questions questions={questions} />
+
         <ArticleGrid />
       </>
     );

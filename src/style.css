@@ -1,24 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: "Source Sans Pro", sans-serif;
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 @keyframes fade-out {
-    99% {
-        opacity: 0;
-        z-index: -1;
-    }
-    100% {
-        display: none;
-        opacity: 0;
-        z-index: -1;
-    }
+  99% {
+    opacity: 0;
+    z-index: -1;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+    z-index: -1;
+  }
 }
 
 @keyframes fade-in {
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 .leaflet-pane,
@@ -31,12 +35,12 @@ body {
 .leaflet-zoom-box,
 .leaflet-image-layer,
 .leaflet-layer {
-    position: absolute;
-    left: 0;
-    top: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .leaflet-container {
-    overflow: hidden;
-    height: 100%;
+  overflow: hidden;
+  height: 100%;
 }
