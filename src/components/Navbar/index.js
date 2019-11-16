@@ -2,63 +2,30 @@ import React from "react";
 import { css } from "emotion";
 // import { colors } from "../Shared/colors";
 
-// export function Navbar() {
-//   return (
-//     <div
-//       className={css`
-//         background-color: white;
-//         margin-bottom: 1.2em;
-//       `}
-//     >
-//       navbar
-//     </div>
-//   );
-// }
-
 export function Navbar({ colorswitch, sections }) {
   return (
     <div
       className={css`
-        position: -webkit-sticky;
+        position: -webkit-sticky; /* Safari */
         position: sticky;
         top: 0;
         background-color: ${"black"};
-        padding-bottom: 10px;
         z-index: 5;
+        padding: 30px 0px;
+        width: 100%;
+        justify-content: center;
       `}
     >
-      {/* <h4
-        className={css`
-          text-transform: uppercase;
-          margin: 0px;
-          margin-bottom: -12px;
-          margin-top: 6px;
-          font-family: ${"Poppins"};
-          font-style: normal;
-          font-weight: 800;
-          font-size: 40px;
-          line-height: 60px;
-          color: ${"white"};
-          align-items: center;
-          text-align: center;
-        `}
-      >
-        The Daily Bruin x The Daily Trojan
-      </h4> */}
       <h1
         className={css`
+          margin: 0;
           display: flex;
           font-weight: 900;
           text-transform: uppercase;
-          font-size: 2.1rem;
-          margin-top: 6px;
-
+          font-size: 2.5rem;
           color: ${"white"};
-          align-items: center;
           justify-content: center;
-          /* text-align: center; */
           font-family: ${"Poppins"};
-          width: 584px;
         `}
       >
         Daily Bruin x Daily Trojan
@@ -67,23 +34,26 @@ export function Navbar({ colorswitch, sections }) {
         className={css`
           color: ${"white"};
           height: 5;
+          width: 600px;
+          margin: 0 auto;
         `}
       />
       <nav
         className={css`
           display: flex;
-          justify-content: space-around;
-          flex-wrap: wrap;
+          justify-content: center;
           -ms-flex-pack: distribute;
-
+          font-size: 20px;
           a {
             color: ${"white"};
-            font-weight: bold;
-            padding-right: 0.8em;
+            text-decoration: none;
+            padding: 0.4em 1.2em;
+            &:hover {
+              text-decoration: underline;
+            }
           }
         `}
       >
-        <a href="#map">Memories</a>
         {sections &&
           sections.map(section => (
             <a key={section} href={`#${section}`}>

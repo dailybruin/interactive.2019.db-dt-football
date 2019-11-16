@@ -16,7 +16,8 @@ class Bar extends React.Component {
     return (
       <div
         className={css`
-          width: 50%;
+          width: 100%;
+          justify-content: center;
         `}
       >
         <div

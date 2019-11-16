@@ -11,22 +11,37 @@ import { Timeline } from "./Timeline";
 
 const questions = [
   {
-    question: "Question 1",
-    answer1: "Max Wu LOLOL",
-    answer2: "USC"
+    question: "Do you like cats?",
+    answer1: "Yes",
+    answer2: "No"
   },
   {
-    question: "Question 2",
-    answer1: "UCLA",
-    answer2: "USC"
+    question: "Do you like squirrels?",
+    answer1: "Yes",
+    answer2: "No"
   },
   {
-    question: "Question 3",
-    answer1: "UCLA",
-    answer2: "USC"
+    question: "Do you like dogs?",
+    answer1: "Yes",
+    answer2: "No"
   },
   {
     question: "Do you like cupcakes?",
+    answer1: "Yes",
+    answer2: "No"
+  },
+  {
+    question: "Do you like goats?",
+    answer1: "Yes",
+    answer2: "No"
+  },
+  {
+    question: "Do you like ducks?",
+    answer1: "Yes",
+    answer2: "No"
+  },
+  {
+    question: "Do you like horses?",
     answer1: "Yes",
     answer2: "No"
   }
@@ -81,7 +96,7 @@ export class App extends React.Component {
   render() {
     return (
       <>
-        <Navbar />
+        <Navbar sections={["section1", "section2"]} />
 
         <SubHeading text="Are you #GoBruins or #FightOn?" />
         <Questions questions={questions} />

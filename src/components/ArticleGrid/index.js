@@ -3,6 +3,7 @@ import { css } from "emotion";
 import { Section } from "./Section";
 import { colors } from "../Shared/colors";
 import { Header } from "./Header";
+import { mobile } from "../Shared/mediaQueries";
 
 export class ArticleGrid extends React.Component {
   constructor(props) {
@@ -54,32 +55,31 @@ export class ArticleGrid extends React.Component {
           width: 100%;
           min-height: 90vh;
           text-align: center;
-          padding: 10em;
+          padding: 2em;
+          ${mobile} {
+            padding: 1em;
+          }
           padding-top: 0.5em;
           border-top: 2vh solid white;
         `}
       >
-        {/* <Header
-                    colorswitch={this.state.colorswitch}
-                    sections={this.state.data.map(x => x.section)}
-                /> */}
         {this.state.data.length && (
           <div
             className={css`
               display: grid;
               grid-template-columns: repeat(2, 1fr);
+              @media only screen and (max-width: 900px) {
+                grid-template-columns: repeat(1, 1fr);
+              }
             `}
           >
-            <Section
-              key={this.state.data[0].paper}
-              data={this.state.data[0]}
-              schoolname={"UCLA"}
-            />
-            <Section
-              key={this.state.data[1].paper}
-              data={this.state.data[1]}
-              schoolname={"USC"}
-            />
+            {this.state.data.map((d, index) => (
+              <Section
+                key={d.paper}
+                data={d}
+                schoolname={index == 0 ? "UCLA" : "USC"}
+              />
+            ))}
           </div>
         )}
       </div>

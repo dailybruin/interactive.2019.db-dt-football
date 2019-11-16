@@ -21,7 +21,6 @@ export function SubHeading({ text, explainer }) {
           padding-top: 20px;
           padding-bottom: 0px;
           width: 100%;
-          margin: 10px;
           ${mobile} {
             margin: 5px;
             font-size: 18px;

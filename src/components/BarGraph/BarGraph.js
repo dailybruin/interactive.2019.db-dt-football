@@ -2,6 +2,7 @@ import React from "react";
 import Bar from "../Bar/Bar";
 import { css } from "emotion";
 import QuestionHover from "../QuestionHover/QuestionHover";
+import { mobile } from "../Shared/mediaQueries";
 
 const temp_data2 = [
   {
@@ -63,28 +64,19 @@ class BarGraph extends React.Component {
       total_SC =
         total_SC + (this.state.num_responses - parseInt(responsesArray[i], 10));
     }
-    console.log(responsesArray);
     const rows = responsesArray.map((LA, index) => (
       <div
         className={css`
-          display: flex;
-          margin: 10px;
+          margin: 15px;
+          justify-content: center;
         `}
       >
-        <Bar
-          numResponses={this.state.num_responses}
-          numYes={LA}
-          isUCLA="true"
-        />
         {/* insert question into the prop of this thing */}
         <QuestionHover
+          numYes={LA}
+          numResponses={this.state.num_responses}
           question_num={index + 1}
           question={Object.keys(this.state.responses)[index]}
-        />
-        <Bar
-          numResponses={this.state.num_responses}
-          numYes={this.state.num_responses - LA}
-          isUCLA="false"
         />
       </div>
     ));
@@ -92,20 +84,7 @@ class BarGraph extends React.Component {
       <>
         <div
           className={css`
-            font-family: Poppins;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 36px;
-            line-height: 45px;
-            text-align: center;
-            margin-bottom: 30px;
-          `}
-        >
-          Here’s where your allegiance lies.
-        </div>
-        <div
-          className={css`
-            width: 70%;
+            width: 90%;
             margin: auto;
             display: flex;
             flex-direction: column;
@@ -156,7 +135,13 @@ class BarGraph extends React.Component {
               </span>
             </div>
           </div>
-          {rows}
+          <div
+            className={css`
+              justify-content: center;
+            `}
+          >
+            {rows}
+          </div>
           <div
             className={css`
               font-family: "Poppins", sans-serif;

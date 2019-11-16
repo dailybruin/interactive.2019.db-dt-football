@@ -11,7 +11,11 @@ var containerClass = css`
   border: 2px solid #f7cd6a;
   color: black;
   height: auto;
-  width: 70vw;
+  width: 70%;
+  ${mobile} {
+    width: 85%;
+    padding: 10px;
+  }
   z-index: 5;
   margin: auto;
   padding: 30px 30px;
@@ -28,7 +32,7 @@ var buttonClass = css`
   color: white;
   cursor: pointer;
   height: 100%;
-  margin: 10px 30px;
+  margin: 10px 2vw;
   &:hover {
     background-color: #fcd579;
     transition: background-color 0.1s;
