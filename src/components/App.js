@@ -11,8 +11,7 @@ import BarGraph from "./BarGraph/BarGraph";
 
 const questions = [
   {
-    question:
-      "Question 1 Question 1 Question 1 Question 1 Question 1 Question 1 Question 1 Question 1",
+    question: "Question 1",
     answer1: "Max Wu LOLOL",
     answer2: "USC"
   },
@@ -28,8 +27,8 @@ const questions = [
   },
   {
     question: "Do you like cupcakes?",
-    answer1: "UCLA",
-    answer2: "USC"
+    answer1: "Yes",
+    answer2: "No"
   }
 ];
 
@@ -39,6 +38,7 @@ export class App extends React.Component {
       <>
         {/* {this.props.visited || <LandingPage />} */}
         <Navbar />
+        <BarGraph />
 
         <SubHeading text="Here's where your allegiance lies." />
         {/* <Choose/> */}
@@ -49,7 +49,6 @@ export class App extends React.Component {
         <SubHeading text="Read more here." />
         <Questions questions={questions} />
         <ArticleGrid />
-        <BarGraph />
       </>
     );
   }
