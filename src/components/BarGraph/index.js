@@ -1,6 +1,8 @@
 import React from "react";
 import { Bar } from "../Bar";
 import { css } from "emotion";
+import QuestionHover from "../QuestionHover/QuestionHover";
+import { mobile } from "../Shared/mediaQueries";
 
 const temp_data2 = [
   {
@@ -65,47 +67,24 @@ export class BarGraph extends React.Component {
     const rows = responsesArray.map((LA, index) => (
       <div
         className={css`
-          display: flex;
-          margin: 10px;
+          margin: 15px;
+          justify-content: center;
         `}
       >
-        <Bar
-          numResponses={this.state.num_responses}
+        {/* insert question into the prop of this thing */}
+        <QuestionHover
           numYes={LA}
-          isUCLA="true"
-        />
-        <div
-          className={css`
-            width: 60px !important;
-            text-align: center;
-            font-family: "Poppins", sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 28px;
-            flex-shrink: 0;
-          `}
-        >
-          {index + 1}
-        </div>
-        <Bar
           numResponses={this.state.num_responses}
-          numYes={this.state.num_responses - LA}
-          isUCLA="false"
+          question_num={index + 1}
+          question={Object.keys(this.state.responses)[index]}
         />
       </div>
     ));
     return (
       <>
-        {/* <div className={css`
-                        width: 70%;
-                        margin: auto;
-                    `}>
-                        
-                    </div> */}
         <div
           className={css`
-            width: 70%;
+            width: 90%;
             margin: auto;
             display: flex;
             flex-direction: column;
@@ -156,7 +135,13 @@ export class BarGraph extends React.Component {
               </span>
             </div>
           </div>
-          {rows}
+          <div
+            className={css`
+              justify-content: center;
+            `}
+          >
+            {rows}
+          </div>
           <div
             className={css`
               font-family: "Poppins", sans-serif;
@@ -165,6 +150,7 @@ export class BarGraph extends React.Component {
               font-size: 28px;
               width: 100%;
               text-align: center;
+              margin-top: 20px;
             `}
           >
             Who wins?

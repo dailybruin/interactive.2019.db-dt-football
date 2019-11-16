@@ -6,28 +6,42 @@ import { SubHeading } from "./SubHeading";
 import { Video } from "./Video";
 import { Navbar } from "./Navbar";
 import { Questions } from "./Questions";
-
 import { BarGraph } from "./BarGraph";
 import { Timeline } from "./Timeline";
 
 const questions = [
   {
-    question: "Question 1",
-    answer1: "Max Wu LOLOL",
-    answer2: "USC"
+    question: "Do you like cats?",
+    answer1: "Yes",
+    answer2: "No"
   },
   {
-    question: "Question 2",
-    answer1: "UCLA",
-    answer2: "USC"
+    question: "Do you like squirrels?",
+    answer1: "Yes",
+    answer2: "No"
   },
   {
-    question: "Question 3",
-    answer1: "UCLA",
-    answer2: "USC"
+    question: "Do you like dogs?",
+    answer1: "Yes",
+    answer2: "No"
   },
   {
     question: "Do you like cupcakes?",
+    answer1: "Yes",
+    answer2: "No"
+  },
+  {
+    question: "Do you like goats?",
+    answer1: "Yes",
+    answer2: "No"
+  },
+  {
+    question: "Do you like ducks?",
+    answer1: "Yes",
+    answer2: "No"
+  },
+  {
+    question: "Do you like horses?",
     answer1: "Yes",
     answer2: "No"
   }
@@ -38,7 +52,7 @@ const timelineCards = [
     img:
       "https://dailybruin.com/images/2019/11/web.ns_.joebiden.KH_-640x466.jpg",
     blurb:
-      "this cool this thing eally cool was really cool this thingool this thing eally cool was really cool this thingool this thing eally cool was really cool this thingool this thing eally cool was really cool this thingool this thing eally cool was really cool this thingool this thing eally cool was really cool this thingool this thing eally cool was really cool this thingool this thing eally cool was really cool this thingool this thing eally cool was really cool this thingool this thing eally cool was really cool this thingool this thing eally cool was really cool this thingool this thing eally cool was really cool this thingool this thing eally cool was really cool this thingool this thing eally cool was really cool this thingool this thing eally cool was really cool this thing happened and it was really cool happened",
+      "this thing happened and it was really cool thi thing happened and it was really cool this thing happened and it was really cool this thing really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool this thing happened and it was really cool happened",
     year: "2015"
   },
   {
@@ -82,22 +96,30 @@ export class App extends React.Component {
   render() {
     return (
       <>
-        <Navbar colorswitch={false} sections={["Test1", "Test2", "Test3"]} />
+        <Navbar sections={["section1", "section2"]} />
+
+        <SubHeading text="Are you #GoBruins or #FightOn?" />
         <Questions questions={questions} />
+        <SubHeading
+          text="Here's where your allegiance lies."
+          explainer="explainer here."
+        />
         <BarGraph />
 
-        <SubHeading text="Here's where your allegiance lies." />
-        {/* <Choose/> */}
         <SubHeading text="Here's how it all came together." />
-        <PhotoGallery />
-        <SubHeading text="Video Title." />
-        <Video />
-        <SubHeading text="Read more here." />
         <Timeline
           cards={timelineCards}
           colors={["#CD6969", "#F7CD6A", "#83B8D7"]}
         />
-        <ArticleGrid />
+
+        <SubHeading text="Video Title." />
+        <Video />
+
+        <SubHeading text="Read more here." />
+
+        <div>
+          <ArticleGrid />
+        </div>
       </>
     );
   }

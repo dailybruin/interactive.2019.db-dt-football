@@ -1,6 +1,8 @@
 import React from "react";
 import { css } from "emotion";
 import { Card } from "./Card";
+import leftArrow from "./leftArrow.png";
+import rightArrow from "./rightArrow.png";
 
 export class Timeline extends React.Component {
   constructor(props) {
@@ -35,7 +37,7 @@ export class Timeline extends React.Component {
           num={i}
           activenum={this.state.activenum}
           color={this.props.colors[i % this.props.colors.length]}
-        ></Card>
+        />
       );
     }
     return (
@@ -51,7 +53,7 @@ export class Timeline extends React.Component {
         <div
           className={css`
             position: absolute;
-            left: calc(50% - 100px);
+            left: calc(50% - 150px);
             transform: translateX(${-200 * this.state.activenum}px);
             transition: transform 500ms;
             height: 400px;
@@ -59,25 +61,28 @@ export class Timeline extends React.Component {
         >
           {this.state.renderedCards}
         </div>
-        <button
+        <img
           className={css`
             position: absolute;
-            bottom: 0;
+            left: calc(50% - 250px);
+            bottom: 60%;
+            z-index: 4;
+            cursor: pointer;
           `}
+          src={leftArrow}
           onClick={this.scrollLeft}
-        >
-          LEFT
-        </button>
-        <button
+        />
+        <img
           className={css`
             position: absolute;
-            bottom: 0;
-            left: 100px;
+            bottom: 60%;
+            right: calc(50% - 250px);
+            z-index: 4;
+            cursor: pointer;
           `}
+          src={rightArrow}
           onClick={this.scrollRight}
-        >
-          RIGHT
-        </button>
+        />
       </div>
     );
   }
