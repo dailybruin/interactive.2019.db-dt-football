@@ -1,5 +1,8 @@
 # UCLA-USC Game
 
+Netlify:
+- https://laughing-nobel-8ca292.netlify.com/
+
 Figma:
 - https://www.figma.com/file/GM0MTTMhWW6CwHTUkR6n1W/Daily-Bruin-x-Daily-Trojan?node-id=0%3A1
 
