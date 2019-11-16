@@ -19,7 +19,7 @@ export class Card extends React.Component {
             white-space: normal;
             height: 440px;
             vertical-align: baseline;
-            transition: width 300ms;
+            transition: width 500ms;
 
             &.active {
               width: 300px;
@@ -29,19 +29,21 @@ export class Card extends React.Component {
       >
         <div
           className={
-            (this.props.activenum == this.props.num ? "active " : "") +
+            ((Math.abs(this.props.activenum - this.props.num) <= 2) ? "active " : "") +
             css`
               background-color: ${this.props.color};
               padding: 15px;
               overflow: hidden;
               height: 400px;
               display: block;
-              vertical-align: bottom;
+              /* vertical-align: bottom; */
 
               transition: all 500ms;
               transform: translateY(360px);
               &.active {
-                transform: translateY(0);
+                /* transform: translateY(0); */
+                transform: ${this.props.activenum == this.props.num ? 'translateY(0)' : 
+                ((Math.abs(this.props.activenum - this.props.num) <= 1) ? 'translateY(300px)' : 'translateY(340px)')};
               }
             `
           }

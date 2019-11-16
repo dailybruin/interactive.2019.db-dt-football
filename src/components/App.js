@@ -83,8 +83,12 @@ export class App extends React.Component {
       <>
         <Navbar />
 
+        <SubHeading text="Are you #GoBruins or #FightOn?" />
         <Questions questions={questions} />
-        <SubHeading text="Here's where your allegiance lies." />
+        <SubHeading
+          text="Here's where your allegiance lies."
+          explainer="explainer here."
+        />
         <BarGraph />
 
         <SubHeading text="Here's how it all came together." />
@@ -98,7 +102,9 @@ export class App extends React.Component {
 
         <SubHeading text="Read more here." />
 
-        <ArticleGrid />
+        <div>
+          <ArticleGrid />
+        </div>
       </>
     );
   }
