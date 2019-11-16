@@ -1,6 +1,7 @@
 import React from "react";
 import Bar from "../Bar/Bar";
 import { css } from "emotion";
+import QuestionHover from "../QuestionHover/QuestionHover";
 
 const temp_data2 = [
   {
@@ -62,6 +63,7 @@ class BarGraph extends React.Component {
       total_SC =
         total_SC + (this.state.num_responses - parseInt(responsesArray[i], 10));
     }
+    console.log(responsesArray);
     const rows = responsesArray.map((LA, index) => (
       <div
         className={css`
@@ -74,20 +76,11 @@ class BarGraph extends React.Component {
           numYes={LA}
           isUCLA="true"
         />
-        <div
-          className={css`
-            width: 60px !important;
-            text-align: center;
-            font-family: "Poppins", sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 28px;
-            flex-shrink: 0;
-          `}
-        >
-          {index + 1}
-        </div>
+        {/* insert question into the prop of this thing */}
+        <QuestionHover
+          question_num={index + 1}
+          question={Object.keys(this.state.responses)[index]}
+        />
         <Bar
           numResponses={this.state.num_responses}
           numYes={this.state.num_responses - LA}
@@ -97,12 +90,19 @@ class BarGraph extends React.Component {
     ));
     return (
       <>
-        {/* <div className={css`
-                        width: 70%;
-                        margin: auto;
-                    `}>
-                        
-                    </div> */}
+        <div
+          className={css`
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 45px;
+            text-align: center;
+            margin-bottom: 30px;
+          `}
+        >
+          Here’s where your allegiance lies.
+        </div>
         <div
           className={css`
             width: 70%;
@@ -165,6 +165,7 @@ class BarGraph extends React.Component {
               font-size: 28px;
               width: 100%;
               text-align: center;
+              margin-top: 20px;
             `}
           >
             Who wins?

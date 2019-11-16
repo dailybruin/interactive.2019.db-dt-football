@@ -5,42 +5,57 @@ class QuestionHover extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      width:
-        Math.round((this.props.numYes / this.props.numResponses) * 100) + "%",
-      color: this.props.isUCLA === "true" ? "#83B8D7" : "#CD6969",
-      isUCLA: this.props.isUCLA
+      hover: false
     };
+    this.onMouseEnterHandler = this.onMouseEnterHandler.bind(this);
+    this.onMouseLeaveHandler = this.onMouseLeaveHandler.bind(this);
+  }
+
+  onMouseEnterHandler() {
+    this.setState({
+      hover: true
+    });
+  }
+  onMouseLeaveHandler() {
+    this.setState({
+      hover: false
+    });
   }
 
   render() {
     return (
       <div
+        onMouseEnter={this.onMouseEnterHandler}
+        onMouseLeave={this.onMouseLeaveHandler}
         className={css`
-          width: 50%;
+          width: 60px !important;
+          text-align: center;
+          font-family: "Poppins", sans-serif;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 24px;
+          line-height: 28px;
+          flex-shrink: 0;
+          position: relative;
         `}
       >
+        {this.props.question_num}
         <div
           className={css`
-            width: ${this.state.width};
-            background: ${this.state.color};
-            float: ${this.state.isUCLA === "true" ? "right" : "left"};
+            width: 300px;
+            position: absolute;
+            left: -120px;
+            top: 30px;
+            border-radius: 5px;
+            border: 2px solid black;
+            font-weight: normal;
+            font-size: 18px;
+            background: white;
+            z-index: 5;
+            display: ${this.state.hover === true ? "inline-block" : "none"};
           `}
         >
-          <span
-            className={css`
-              float: ${this.state.isUCLA === "true" ? "left" : "right"};
-              position: relative;
-              left: ${this.state.isUCLA === "true" ? "-70px" : "70px"};
-              font-family: "Poppins", sans-serif;
-              font-style: normal;
-              font-weight: bold;
-              font-size: 24px;
-              line-height: 24px;
-              color: ${this.props.isUCLA === "true" ? "#83B8D7" : "#CD6969"};
-            `}
-          >
-            {this.state.width}
-          </span>
+          {this.props.question}
         </div>
       </div>
     );
