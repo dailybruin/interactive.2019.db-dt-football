@@ -6,20 +6,20 @@ import { mobile } from "../Shared/mediaQueries";
 import styled from "styled-components";
 
 const Header = styled("h2")`
-font-size: 4rem;
-            color: ${props => {
-              if (props.school == "USC") return colors.red;
-              if (props.school == "UCLA") return colors.blue;
-            }}
-            text-transform: uppercase;
-            margin-bottom: 0.4em;
-            
-            ${mobile} {
-                font-size: ${props => {
-                  if (props.length > 10) return "3rem";
-                  return "4rem";
-                }}
-            }
+  font-size: 4rem;
+  color: ${props => {
+    if (props.school == "USC") return colors.red;
+    if (props.school == "UCLA") return colors.blue;
+  }};
+  text-transform: uppercase;
+  margin-bottom: 0.4em;
+
+  ${mobile} {
+    font-size: ${props => {
+      if (props.length > 10) return "3rem";
+      return "4rem";
+    }};
+  }
 `;
 
 export class Section extends React.Component {

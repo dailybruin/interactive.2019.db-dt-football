@@ -24,6 +24,7 @@ export function Navbar({ colorswitch, sections }) {
         top: 0;
         background-color: ${"black"};
         padding-bottom: 10px;
+        z-index: 5;
       `}
     >
       {/* <h4

@@ -51,7 +51,7 @@ export class ArticleGrid extends React.Component {
     return (
       <div
         className={css`
-          width: calc(100% - 20em);
+          width: 100%;
           min-height: 90vh;
           text-align: center;
           padding: 10em;
