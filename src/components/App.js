@@ -9,12 +9,23 @@ import { Questions } from "./Questions";
 
 const questions = [
   {
-    question: "Question 1",
-    answer1: "UCLA",
+    question:
+      "Question 1 Question 1 Question 1 Question 1 Question 1 Question 1 Question 1 Question 1",
+    answer1: "Max Wu LOLOL",
     answer2: "USC"
   },
   {
     question: "Question 2",
+    answer1: "UCLA",
+    answer2: "USC"
+  },
+  {
+    question: "Question 3",
+    answer1: "UCLA",
+    answer2: "USC"
+  },
+  {
+    question: "Do you like cupcakes?",
     answer1: "UCLA",
     answer2: "USC"
   }
@@ -33,7 +44,7 @@ export class App extends React.Component {
         <SubHeading text="Video Title." />
         <Video />
         <SubHeading text="Read more here." />
-        <Questions text={questions} />
+        <Questions questions={questions} />
         <ArticleGrid />
       </>
     );
