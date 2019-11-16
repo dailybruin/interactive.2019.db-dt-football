@@ -4,25 +4,32 @@ import { colors } from "../Shared/colors";
 import styled from "styled-components";
 
 const Article = styled("article")`
-border: ${props => {
-  if (props.school == "USC") return "50px solid " + colors.red;
-  if (props.school == "UCLA") return "50px solid " + colors.blue;
-}}
+  border: ${props => {
+    if (props.school == "USC") return "50px solid " + colors.red;
+    if (props.school == "UCLA") return "50px solid " + colors.blue;
+  }};
   background-color: "white";
   padding: 3em;
+`;
+
+const a = styled("a")`
+  color: ${colors.slate};
+  text-decoration: none;
+  width: 100%;
 `;
 
 export default function ArticleCard({ article, school }) {
   return (
     <Article school={school}>
-      <a
+      <a href={article.link}>
+        {/* <a
         href={article.link}
         className={css`
           color: ${colors.slate};
           text-decoration: none;
           width: 100%;
         `}
-      >
+      > */}
         <h2 className="section-header">
           {article.italics ? <em>{article.section}</em> : article.section}
         </h2>
