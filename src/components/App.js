@@ -112,8 +112,8 @@ export class App extends React.Component {
           colors={["#CD6969", "#F7CD6A", "#83B8D7"]}
         />
 
-        <SubHeading text="Video Title." />
-        <Video />
+        <SubHeading text="Video: Title of the video here and here" />
+        <Video link="https://www.youtube.com/embed/et_uT-8TPTU" />
 
         <SubHeading text="Read more here." />
 
