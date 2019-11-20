@@ -1,8 +1,8 @@
 {
-    "name": "interactive.2019.graduation-issue",
+    "name": "interactive.2019.db-dt-football",
     "scripts": {
         "start": "cross-env NODE_ENV=development parcel src/index.html",
-        "build": "cross-env NODE_ENV=production parcel build src/index.html --public-url /2019/graduation-issue",
+        "build": "cross-env NODE_ENV=production parcel build src/index.html --public-url /",
         "build:netlify": "cross-env NODE_ENV=production parcel build src/index.html --public-url /",
         "precommit": "lint-staged"
     },
