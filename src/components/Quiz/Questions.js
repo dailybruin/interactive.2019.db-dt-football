@@ -17,10 +17,11 @@ function post_func(url, information) {
   }
 }
 
-const BRUIN = "Bruin";
-const TROJAN = "Trojan";
+const BRUIN = "Joe Bruin";
+const TROJAN = "Tommy Trojan";
 const defaultQuestion = {
-  question: "Trojan or Bruin?",
+  question:
+    "Choose your fighter. There is only one correct answer. What is the answer?",
   answer1: TROJAN,
   answer2: BRUIN
 };

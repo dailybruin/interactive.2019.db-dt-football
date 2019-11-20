@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import ReactGA from "react-ga";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import reducer from "./reducers";
@@ -21,6 +22,9 @@ if (document != null) {
     </Provider>,
     document.getElementById("root")
   );
+
+  ReactGA.initialize("UA-28181852-23");
+  ReactGA.pageview(window.location.pathname + window.location.search);
 
   // HMR (Hot Module Replacement)
   if (module.hot) {

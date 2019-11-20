@@ -69,7 +69,6 @@ export function SubHeading({ text, explainer, ID }) {
         <p
           className={css`
             font-style: normal;
-            font-weight: bold;
             font-size: 20px;
             text-align: center;
             font-family: "Poppins", sans-serif;
