@@ -1,15 +1,14 @@
 import React from "react";
 import { css } from "emotion";
 import { Section } from "./Section";
-import { colors } from "../Shared/colors";
 import { Header } from "./Header";
 import { mobile } from "../Shared/mediaQueries";
+import { colors } from "../Shared/colors";
 
 export class ArticleGrid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
       colorswitch: false
     };
     this.listenScrollEvent = this.listenScrollEvent.bind(this);
@@ -27,17 +26,6 @@ export class ArticleGrid extends React.Component {
     if (window) {
       window.addEventListener("scroll", this.listenScrollEvent);
     }
-    fetch(
-      "https://kerckhoff.dailybruin.com/api/packages/flatpages/interactive.2019.db-dt-football/"
-    )
-      .then(response => response.json())
-      .then(data => {
-        let papers = data.data["data.aml"].papers;
-        console.log(papers);
-        this.setState({
-          data: papers
-        });
-      });
   }
 
   componentWillUnmount() {
@@ -57,13 +45,13 @@ export class ArticleGrid extends React.Component {
           text-align: center;
           padding: 2em;
           ${mobile} {
-            padding: 1em;
+            padding: 0em;
           }
           padding-top: 0.5em;
-          border-top: 2vh solid white;
+          padding: 0px 10%;
         `}
       >
-        {this.state.data.length && (
+        {this.props.papers && (
           <div
             className={css`
               display: grid;
@@ -73,12 +61,23 @@ export class ArticleGrid extends React.Component {
               }
             `}
           >
-            {this.state.data.map((d, index) => (
-              <Section
-                key={d.paper}
-                data={d}
-                schoolname={index == 0 ? "UCLA" : "USC"}
-              />
+            {this.props.papers.map((paper, index) => (
+              <div
+                className={css`
+                  margin: 20px;
+                  padding-bottom: 30px;
+                  background-color: ${index == 0 ? colors.blue : colors.red};
+                `}
+              >
+                {" "}
+                {paper.sections.map(section => (
+                  <Section
+                    name={section.section}
+                    content={section.content}
+                    schoolname={index == 0 ? "UCLA" : "USC"}
+                  />
+                ))}
+              </div>
             ))}
           </div>
         )}

@@ -2,6 +2,8 @@ import React from "react";
 import { css } from "emotion";
 import { colors } from "../Shared/colors";
 import { mobile } from "../Shared/mediaQueries";
+import { BarGraph } from "../BarGraph";
+import { SubHeading } from "../SubHeading";
 
 var containerClass = css`
   display: flex;
@@ -157,63 +159,78 @@ export class Questions extends React.Component {
 
   render() {
     return (
-      <div className={containerClass}>
-        <div
-          className={
-            this.state.hidden
-              ? css`
-                  opacity: 0;
-                  transition: opacity 0.2s;
-                `
-              : css`
-                  opacity: 1;
-                  transition: opacity 0.2s;
-                `
-          }
-        >
-          {this.state.currentIndex < this.props.questions.length && (
-            <div>
-              <h2
-                className={css`
-                  margin: 30px;
-                  margin-top: 10px;
-                  text-align: center;
-                `}
-              >
-                {this.props.questions[this.state.currentIndex].question}
-              </h2>
-              <div
-                className={css`
-                  display: flex;
-                  justify-content: center;
-                  text-align: center;
-                  align-items: center;
-                  ${mobile} {
-                    flex-direction: column;
-                  }
-                `}
-              >
-                {this.state.answerArray.map(item => (
-                  <div
-                    className={buttonClass}
-                    onClick={
-                      this.state.hidden
-                        ? () => {}
-                        : () => this.incCount(item.response_value)
+      <>
+        <div className={containerClass}>
+          <div
+            className={
+              this.state.hidden
+                ? css`
+                    opacity: 0;
+                    transition: opacity 0.2s;
+                  `
+                : css`
+                    opacity: 1;
+                    transition: opacity 0.2s;
+                  `
+            }
+          >
+            {this.state.currentIndex < this.props.questions.length && (
+              <div>
+                <h2
+                  className={css`
+                    margin: 30px;
+                    margin-top: 10px;
+                    text-align: center;
+                  `}
+                >
+                  {this.props.questions[this.state.currentIndex].question}
+                </h2>
+                <div
+                  className={css`
+                    display: flex;
+                    justify-content: center;
+                    text-align: center;
+                    align-items: center;
+                    ${mobile} {
+                      flex-direction: column;
                     }
-                  >
-                    {item.text}
-                  </div>
-                ))}
+                  `}
+                >
+                  {this.state.answerArray.map(item => (
+                    <div
+                      className={buttonClass}
+                      onClick={
+                        this.state.hidden
+                          ? () => {}
+                          : () => this.incCount(item.response_value)
+                      }
+                    >
+                      {item.text}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {this.state.currentIndex >= this.props.questions.length && (
-            <h2> Thank You! </h2>
-          )}
+            {this.state.currentIndex >= this.props.questions.length && (
+              <h2> Thank you! See how other people responded below. </h2>
+            )}
+          </div>
         </div>
-      </div>
+        {this.state.currentIndex >= this.props.questions.length && (
+          <div
+            className={css`
+              margin: 50px 30px;
+            `}
+          >
+            <SubHeading
+              text="Results:"
+              explainer="Tap a bar to see the question."
+            />
+            <BarGraph />
+          </div>
+        )}
+      </>
     );
   }
 }

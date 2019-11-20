@@ -8,6 +8,9 @@ import { Navbar } from "./Navbar";
 import { Questions } from "./Questions";
 import { BarGraph } from "./BarGraph";
 import { Timeline } from "./Timeline";
+import { isThisSecond } from "date-fns";
+
+import { css } from "emotion";
 
 const questions = [
   {
@@ -93,32 +96,61 @@ const timelineCards = [
 ];
 
 export class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      fetch_data: []
+    };
+  }
+
+  componentWillMount() {
+    fetch(
+      "https://kerckhoff.dailybruin.com/api/packages/flatpages/interactive.2019.db-dt-football/"
+    )
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          fetch_data: data.data["data.aml"]
+        });
+      });
+  }
   render() {
+    let { fetch_data } = this.state;
+    let { questions, timeline, papers } = fetch_data;
+
+    console.log(fetch_data);
+
     return (
       <>
-        <Navbar sections={["section1", "section2"]} />
+        <Navbar papers={fetch_data["papers"]} />
 
-        <SubHeading text="Are you #GoBruins or #FightOn?" />
-        <Questions questions={questions} />
         <SubHeading
-          text="Here's where your allegiance lies."
-          explainer="explainer here."
+          text="Are you #GoBruins or #FightOn?"
+          explainer="Answer these poll questions to see how others did as well."
+          ID="poll"
         />
-        <BarGraph />
+        {questions && <Questions questions={questions} />}
 
-        <SubHeading text="Here's how it all came together." />
-        <Timeline
-          cards={timelineCards}
-          colors={["#CD6969", "#F7CD6A", "#83B8D7"]}
-        />
+        <SubHeading text="Here's how it all came together." ID="timeline" />
+        {timeline && (
+          <Timeline
+            cards={timeline}
+            colors={["#CD6969", "#F7CD6A", "#83B8D7"]}
+          />
+        )}
 
-        <SubHeading text="Video: Title of the video here and here" />
-        <Video link="https://www.youtube.com/embed/et_uT-8TPTU" />
+        {/* <SubHeading text="Video: Title of the video here and here" />
+        <Video link="https://www.youtube.com/embed/et_uT-8TPTU" /> */}
 
-        <SubHeading text="Read more here." />
+        <SubHeading text="Read more here." ID="stories" />
 
-        <div>
-          <ArticleGrid />
+        <div
+          className={css`
+            width: 100%;
+          `}
+        >
+          <ArticleGrid papers={papers} />
         </div>
       </>
     );

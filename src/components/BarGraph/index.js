@@ -151,6 +151,9 @@ export class BarGraph extends React.Component {
               width: 100%;
               text-align: center;
               margin-top: 20px;
+              ${mobile} {
+                font-size: 24px;
+              }
             `}
           >
             Who wins?

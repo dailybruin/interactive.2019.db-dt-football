@@ -1,8 +1,25 @@
 import React from "react";
 import { css } from "emotion";
 // import { colors } from "../Shared/colors";
+import { slugify } from "../Shared/utils";
+import { colors } from "../Shared/colors";
 
-export function Navbar({ colorswitch, sections }) {
+import { mobile } from "../Shared/mediaQueries";
+
+export function Navbar({ papers }) {
+  let clickables = [];
+
+  papers &&
+    papers.map(paper => {
+      let sections = [];
+      paper.sections.map(section => sections.push(section.section));
+      let obj = {
+        name: paper.paper,
+        sections: sections
+      };
+      clickables.push(obj);
+    });
+
   return (
     <div
       className={css`
@@ -14,54 +31,114 @@ export function Navbar({ colorswitch, sections }) {
         z-index: 5;
         padding: 30px 0px;
         width: 100%;
-        justify-content: center;
+        height: 160px;
+        ${mobile} {
+          height: 120px;
+        }
       `}
     >
       <h1
         className={css`
+          text-align: center;
           margin: 0;
-          display: flex;
           font-weight: 900;
-          text-transform: uppercase;
           font-size: 2.5rem;
           color: ${"white"};
-          justify-content: center;
           font-family: ${"Poppins"};
+          ${mobile} {
+            font-size: 1.5rem;
+          }
         `}
       >
-        Daily Bruin x Daily Trojan
+        DAILY BRUIN
+        <span
+          className={css`
+            font-size: 2rem;
+            ${mobile} {
+              font-size: 1.2rem;
+            }
+          `}
+        >
+          {" "}
+          x{" "}
+        </span>
+        DAILY TROJAN
       </h1>
       <hr
         className={css`
           color: ${"white"};
           height: 5;
           width: 600px;
+          ${mobile} {
+            width: 80%;
+          }
           margin: 0 auto;
         `}
       />
-      <nav
+      <div
         className={css`
-          display: flex;
-          justify-content: center;
-          -ms-flex-pack: distribute;
-          font-size: 20px;
-          a {
-            color: ${"white"};
-            text-decoration: none;
-            padding: 0.4em 1.2em;
-            &:hover {
-              text-decoration: underline;
-            }
-          }
+          margin-top: 10px;
         `}
       >
-        {sections &&
-          sections.map(section => (
-            <a key={section} href={`#${section}`}>
-              {section}
-            </a>
-          ))}
-      </nav>
+        <nav
+          className={css`
+            display: flex;
+            justify-content: center;
+            -ms-flex-pack: distribute;
+            margin-top: 2px;
+            font-size: 18px;
+            a {
+              color: white;
+              text-decoration: none;
+              padding: 0em 0.8em;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          `}
+        >
+          <a href={`#poll`}>Poll</a>
+          <a href={`#timeline`}>Timeline</a>
+          <a href={`#stories`}>Stories</a>
+        </nav>
+        {/* {clickables &&
+          clickables.map(paper => (
+            <nav
+              className={css`
+                display: flex;
+                justify-content: center;
+                -ms-flex-pack: distribute;
+                margin-top: 2px;
+                font-size: 18px;
+                a {
+                  color: white;
+                  text-decoration: none;
+                  padding: 0em 0.8em;
+                  &:hover {
+                    text-decoration: underline;
+                  }
+                }
+                div {
+                  color: ${paper.name == "Daily Bruin"
+                    ? colors.blue
+                    : colors.red};
+                  text-decoration: none;
+                  padding: 0em 1.2em;
+                }
+              `}
+            >
+              <div>{paper.name}:</div>
+              {paper.sections.map(section => (
+                <a
+                  key={section}
+                  href={`#${slugify(paper.name + " " + section)}`}
+                >
+                  {section}
+                </a>
+              ))}
+            </nav>
+          ))} */}
+      </div>
     </div>
   );
 }

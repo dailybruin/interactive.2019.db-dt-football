@@ -3,6 +3,7 @@ import { css } from "emotion";
 import { Card } from "./Card";
 import leftArrow from "./leftArrow.png";
 import rightArrow from "./rightArrow.png";
+import { mobile } from "../Shared/mediaQueries";
 
 export class Timeline extends React.Component {
   constructor(props) {
@@ -65,6 +66,9 @@ export class Timeline extends React.Component {
           className={css`
             position: absolute;
             left: calc(50% - 250px);
+            ${mobile} {
+              left: calc(50% - 180px);
+            }
             bottom: 60%;
             z-index: 4;
             cursor: pointer;
@@ -77,6 +81,9 @@ export class Timeline extends React.Component {
             position: absolute;
             bottom: 60%;
             right: calc(50% - 250px);
+            ${mobile} {
+              right: calc(50% - 180px);
+            }
             z-index: 4;
             cursor: pointer;
           `}
