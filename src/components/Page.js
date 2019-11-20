@@ -10,44 +10,6 @@ import { isThisSecond } from "date-fns";
 import { css } from "emotion";
 import Quiz from "./Quiz";
 
-const questions = [
-  {
-    question: "Do you like cats?",
-    answer1: "Yes",
-    answer2: "No"
-  },
-  {
-    question: "Do you like squirrels?",
-    answer1: "Yes",
-    answer2: "No"
-  },
-  {
-    question: "Do you like dogs?",
-    answer1: "Yes",
-    answer2: "No"
-  },
-  {
-    question: "Do you like cupcakes?",
-    answer1: "Yes",
-    answer2: "No"
-  },
-  {
-    question: "Do you like goats?",
-    answer1: "Yes",
-    answer2: "No"
-  },
-  {
-    question: "Do you like ducks?",
-    answer1: "Yes",
-    answer2: "No"
-  },
-  {
-    question: "Do you like horses?",
-    answer1: "Yes",
-    answer2: "No"
-  }
-];
-
 const timelineCards = [
   {
     img:
@@ -98,8 +60,10 @@ export class Page extends React.Component {
     super(props);
     this.state = {
       loading: true,
-      fetch_data: []
+      fetch_data: [],
+      quizComplete: false
     };
+    this.completeQuiz = this.completeQuiz.bind(this);
   }
 
   componentDidMount() {
@@ -115,6 +79,12 @@ export class Page extends React.Component {
       });
   }
 
+  completeQuiz() {
+    this.setState({
+      quizComplete: true
+    });
+  }
+
   render() {
     const { loading, fetch_data } = this.state;
 
@@ -122,14 +92,30 @@ export class Page extends React.Component {
       return null;
     }
 
-    const { timeline, papers } = fetch_data;
+    const { questions, timeline, papers } = fetch_data;
 
     console.log(fetch_data);
 
     return (
       <>
-        <Quiz questions={questions} />
-        <SubHeading text="Here's how it all came together." ID="timeline" />
+        <SubHeading
+          text="Are you #GoBruins or #FightOn?"
+          explainer={[
+            "With the Victory Bell on the line Saturday, UCLA will fight to keep its season alive, while USC will continue its quest for a Pac-12 title. The Daily Bruin and Daily Trojan came together to break down the two programs, the upcoming matchup and the decades-old rivalry at hand. Fans, young and old, have been taking sides all season long, and tensions only rise during rivalry week.",
+            "Give us your thoughts on the upcoming game – which team will win which battles come Saturday?"
+          ]}
+          ID="poll"
+        />
+        {this.state.quizComplete ? (
+          <h1>Bars</h1>
+        ) : (
+          <Quiz onQuizComplete={this.completeQuiz} questions={questions} />
+        )}
+        <SubHeading
+          text="Here's how the rivalry came to be."
+          explainer="UCLA and USC will face off in the 89th battle for the Victory Bell on Saturday. The crosstown rivalry boasts a dense history full of blowouts, comebacks, heated moments and season-defining plays. Here are the biggest ones from the last century."
+          ID="timeline"
+        />
         <Timeline cards={timeline} colors={["#CD6969", "#F7CD6A", "#83B8D7"]} />
 
         {/* <SubHeading text="Video: Title of the video here and here" />

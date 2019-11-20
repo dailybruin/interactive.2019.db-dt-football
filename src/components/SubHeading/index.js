@@ -9,6 +9,8 @@ export function SubHeading({ text, explainer, ID }) {
       className={css`
         margin-top: 2em;
         margin-bottom: 1.5em;
+        text-align: center;
+        margin: auto;
         ${mobile} {
           margin-top: 1em;
           margin-bottom: 1em;
@@ -42,47 +44,81 @@ export function SubHeading({ text, explainer, ID }) {
           }
         `}
       >
-        {text != "Are you #GoBruins or #FightOn?" ? (
-          text
-        ) : (
-          <div>
-            Are you{" "}
-            <span
-              className={css`
-                color: ${colors.blue};
-              `}
-            >
-              #GoBruins
-            </span>{" "}
-            or{" "}
-            <span
-              className={css`
-                color: ${colors.red};
-              `}
-            >
-              #FightOn?
-            </span>
-          </div>
-        )}
-      </h1>
-      {explainer && (
-        <p
+        <div
           className={css`
-            font-style: normal;
-            font-size: 20px;
-            text-align: center;
-            font-family: "Poppins", sans-serif;
-            margin: 0;
-            padding: 0px 20px;
-            ${mobile} {
-              margin-top: 10px;
-              font-size: 12px;
-            }
+            padding-bottom: 0.5em;
           `}
         >
-          {explainer}
-        </p>
-      )}
+          {" "}
+          {text != "Are you #GoBruins or #FightOn?" ? (
+            text
+          ) : (
+            <>
+              Are you{" "}
+              <span
+                className={css`
+                  color: ${colors.blue};
+                `}
+              >
+                #GoBruins
+              </span>{" "}
+              or{" "}
+              <span
+                className={css`
+                  color: ${colors.red};
+                `}
+              >
+                #FightOn?
+              </span>
+            </>
+          )}
+        </div>
+      </h1>
+      {explainer &&
+        (Array.isArray(explainer) ? (
+          explainer.map((x, i) => (
+            <p
+              className={css`
+                font-style: normal;
+                font-size: 20px;
+                ${i === 1 ? "font-weight: bold;" : "font-weight: normal;"}
+                text-align: center;
+                font-family: "Poppins", sans-serif;
+                width: 70%;
+                padding: 0px 20px 15px 20px;
+                margin: auto;
+
+                ${mobile} {
+                  margin-top: 10px;
+                  font-size: 12px;
+                  width: 95%;
+                }
+              `}
+            >
+              {x}
+            </p>
+          ))
+        ) : (
+          <p
+            className={css`
+              font-style: normal;
+              font-size: 20px;
+              text-align: center;
+              font-family: "Poppins", sans-serif;
+              width: 70%;
+              padding: 0px 20px 15px 20px;
+              margin: auto;
+
+              ${mobile} {
+                margin-top: 10px;
+                font-size: 12px;
+                width: 95%;
+              }
+            `}
+          >
+            {explainer}
+          </p>
+        ))}
     </div>
   );
 }

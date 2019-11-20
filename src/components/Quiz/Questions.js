@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { css } from "emotion";
 import Question from "./Question";
-import { setCookie } from "../../utils";
+import { colors } from "../Shared/colors";
+import { mobile } from "../Shared/mediaQueries";
+import { config } from "../../config";
 
-function post_func(url, information) {
+function logAnswer(body) {
   try {
-    fetch(url, {
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(information), // data can be `string` or {object}!
+    fetch(config.backendURL, {
+      method: "POST",
+      body: JSON.stringify(body), // data can be `string` or {object}!
       headers: {
         "Content-Type": "application/json"
       }
@@ -17,57 +19,54 @@ function post_func(url, information) {
   }
 }
 
-const BRUIN = "Joe Bruin";
-const TROJAN = "Tommy Trojan";
-const defaultQuestion = {
-  question:
-    "Choose your fighter. There is only one correct answer. What is the answer?",
-  answer1: TROJAN,
-  answer2: BRUIN
-};
-
 const Box = ({ children }) => (
   <div
     className={css`
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       text-align: center;
+      background-color: white;
+      border: 2px solid ${colors.yellow};
+      height: auto;
+      width: 70%;
+      ${mobile} {
+        width: 85%;
+        padding: 10px;
+      }
+      z-index: 5;
+      margin: auto;
+      padding: 30px 30px;
     `}
   >
     {children}
   </div>
 );
 
-const Questions = ({ list }) => {
-  const [questions, setQuestions] = useState([defaultQuestion, ...list]);
+const Questions = ({ onQuizComplete, list }) => {
+  const [questions, setQuestions] = useState(list);
   const currentQuestion = questions[0];
 
   if (!currentQuestion) {
-    return (
-      <Box>
-        <h1>Done!</h1>
-      </Box>
-    );
+    onQuizComplete();
+    return null;
   }
 
-  function saveSchool(school) {
-    setCookie("school", school);
-    setQuestions(questions.length > 0 ? questions.slice(1) : null);
+  function skipQuiz() {
+    setQuestions(null);
   }
 
   function changeQuestion(answer) {
-    //logAnswer(currentQuestion, answer);
+    logAnswer({
+      question: currentQuestion.question,
+      answer: answer == currentQuestion.answer1 ? "ucla" : "usc"
+    });
     setQuestions(questions.length > 0 ? questions.slice(1) : null);
-  }
-
-  let callback;
-  if (currentQuestion.question == defaultQuestion.question) {
-    callback = saveSchool;
-  } else {
-    callback = changeQuestion;
   }
 
   return (
     <Box>
-      <Question onClick={callback} {...currentQuestion} />
+      <Question onClick={changeQuestion} {...currentQuestion} />
     </Box>
   );
 };

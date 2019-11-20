@@ -1,12 +1,13 @@
 import React from "react";
 import { css } from "emotion";
+import { colors } from "../Shared/colors";
 
 const Answer = ({ onClick, text }) => (
   <div
     onClick={() => onClick(text)}
     className={css`
       font-size: 20px;
-      background-color: #f7cd6a;
+      background-color: ${colors.yellow};
       border-radius: 5vw;
       padding: 12px 60px;
       color: white;
@@ -21,12 +22,11 @@ const Answer = ({ onClick, text }) => (
 
 const Question = ({ onClick, question, answer1, answer2 }) => {
   return (
-    <div className={css``}>
+    <>
       <h2
         className={css`
           margin: 30px;
           margin-top: 10px;
-          text-align: center;
         `}
       >
         {question}
@@ -42,7 +42,7 @@ const Question = ({ onClick, question, answer1, answer2 }) => {
         <Answer onClick={onClick} text={answer1} />
         <Answer onClick={onClick} text={answer2} />
       </div>
-    </div>
+    </>
   );
 };
 
