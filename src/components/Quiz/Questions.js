@@ -5,6 +5,8 @@ import { colors } from "../Shared/colors";
 import { mobile } from "../Shared/mediaQueries";
 import { config } from "../../config";
 
+const ANIM_LENGTH = 0.5;
+
 function logAnswer(body) {
   try {
     fetch(config.backendURL, {
@@ -45,6 +47,7 @@ const Box = ({ children }) => (
 
 const Questions = ({ onQuizComplete, list }) => {
   const [questions, setQuestions] = useState(list);
+  const [fadeOut, setFadeOut] = useState(false);
   const currentQuestion = questions[0];
 
   if (!currentQuestion) {
@@ -53,7 +56,7 @@ const Questions = ({ onQuizComplete, list }) => {
   }
 
   function skipQuiz() {
-    setQuestions(null);
+    setQuestions([]);
   }
 
   function changeQuestion(answer) {
@@ -61,12 +64,31 @@ const Questions = ({ onQuizComplete, list }) => {
       question: currentQuestion.question,
       answer: answer == currentQuestion.answer1 ? "ucla" : "usc"
     });
-    setQuestions(questions.length > 0 ? questions.slice(1) : null);
+    setFadeOut(true);
+    setTimeout(() => {
+      setQuestions(questions.length > 0 ? questions.slice(1) : []);
+      setFadeOut(false);
+    }, ANIM_LENGTH * 1000 - 0.1);
   }
 
   return (
     <Box>
-      <Question onClick={changeQuestion} {...currentQuestion} />
+      <Question
+        doFadeOut={fadeOut}
+        animLength={ANIM_LENGTH}
+        onClick={changeQuestion}
+        {...currentQuestion}
+      />
+      <div
+        className={css`
+          align-self: flex-end;
+          cursor: pointer;
+          text-decoration: underline;
+        `}
+        onClick={skipQuiz}
+      >
+        Skip
+      </div>
     </Box>
   );
 };

@@ -20,9 +20,22 @@ const Answer = ({ onClick, text }) => (
   </div>
 );
 
-const Question = ({ onClick, question, answer1, answer2 }) => {
+const Question = ({
+  onClick,
+  question,
+  answer1,
+  answer2,
+  doFadeOut,
+  animLength
+}) => {
   return (
-    <>
+    <div
+      className={css`
+        ${doFadeOut === true
+          ? `opacity: 0; transition: opacity ${animLength}s;`
+          : "opacity: 1;"}
+      `}
+    >
       <h2
         className={css`
           margin: 30px;
@@ -42,7 +55,7 @@ const Question = ({ onClick, question, answer1, answer2 }) => {
         <Answer onClick={onClick} text={answer1} />
         <Answer onClick={onClick} text={answer2} />
       </div>
-    </>
+    </div>
   );
 };
 
