@@ -33,8 +33,8 @@ app.get("/", async (req, res) => {
 app.post("", limiter, async (req, res) => {
   console.log("Received POST request");
   const { question, answer } = req.body;
-  let answer = await Answer.create({ question, answer });
-  res.json(answer);
+  let record = await Answer.create({ question, answer });
+  res.json(record);
 });
 
 app.listen(PORT, function() {
