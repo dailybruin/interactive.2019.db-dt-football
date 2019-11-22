@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navbar } from "./Navbar";
 import { Page } from "./Page";
 import Video from "./Video";
+import Sample from "./Article";
 
 const App = ({ visited }) => {
   const [showVideo, setShowVideo] = useState(!visited);
@@ -14,7 +16,16 @@ const App = ({ visited }) => {
   return (
     <>
       <Navbar />
-      <Page />
+      <Router>
+        <Switch>
+          <Route path="/article">
+            <Sample />
+          </Route>
+          <Route path="/">
+            <Page />
+          </Route>
+        </Switch>
+      </Router>
     </>
   );
 };
