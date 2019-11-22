@@ -30,7 +30,7 @@ app.get("/", async (req, res) => {
   res.json(answers);
 });
 
-app.post("", limiter, async (req, res) => {
+app.post("/", async (req, res) => {
   console.log("Received POST request");
   const { question, answer } = req.body;
   let record = await Answer.create({ question, answer });
