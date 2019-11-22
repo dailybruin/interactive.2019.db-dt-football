@@ -37,7 +37,7 @@ const Video = () => (
         );
         animation-name: fade-in;
         animation-delay: 3.8s;
-        animation-duration: 5s;
+        animation-duration: 1s;
         animation-fill-mode: forwards;
         will-change: opacity;
       }

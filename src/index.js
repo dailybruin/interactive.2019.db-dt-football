@@ -7,7 +7,6 @@ import App from "./components/App";
 if (document != null) {
   // Cookies for Landing Page
   const visited = checkVisitedCookie();
-  console.log(visited);
   if (!visited) {
     setVisitedCookie();
   }

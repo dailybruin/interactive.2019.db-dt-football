@@ -60,7 +60,7 @@ export class Page extends React.Component {
           explainer={[
             "With the Victory Bell on the line Saturday, UCLA will fight to keep its season alive, while USC will continue its quest for a Pac-12 title. The Daily Bruin and Daily Trojan came together to break down the two programs, the upcoming matchup and the decades-old rivalry at hand. Fans, young and old, have been taking sides all season long, and tensions only rise during rivalry week.",
             "Give us your thoughts on the upcoming game – which team will win which battles come Saturday?",
-            "( Answer to see results! )"
+            "(Answer to see results!)"
           ]}
           ID="poll"
         />

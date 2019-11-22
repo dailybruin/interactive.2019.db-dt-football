@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "emotion";
 import { colors } from "../Shared/colors";
+import { mobile } from "../Shared/mediaQueries";
 
 const Answer = ({ onClick, text }) => (
   <div
@@ -56,6 +57,10 @@ const Question = ({
           justify-content: center;
           align-items: center;
           text-align: center;
+
+          ${mobile} {
+            flex-direction: column;
+          }
         `}
       >
         {Math.random() <= 0.5 ? (
