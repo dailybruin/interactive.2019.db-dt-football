@@ -1,3 +1,3 @@
 ```
-docker build -t dailybruin/gradissue2019server .
+docker build -t dailybruin/dbdtserver .
 ```
