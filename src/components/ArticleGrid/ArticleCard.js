@@ -11,10 +11,6 @@ const Article = styled("article")`
   }}; */
   background-color: white;
   color: black;
-  padding: 3em;
-  ${mobile} {
-    padding: 2em 1em;
-  }
 `;
 
 const a = styled("a")`
@@ -43,21 +39,31 @@ export default function ArticleCard({ article, school }) {
               className={css`
                 object-fit: cover;
                 width: 100%;
-                height: 250px;
+                height: 100%;
               `}
             />
-            <h3 className="headline">
-              {article.italics ? <em>{article.headline}</em> : article.headline}
-            </h3>
-            {article.author ? (
-              <div
-                className={css`
-                  text-transform: uppercase;
-                `}
-              >
-                By {article.author}
-              </div>
-            ) : null}
+            <div
+              className={css`
+                border-top: 5px solid black;
+              `}
+            >
+              <h3 className="headline">
+                {article.italics ? (
+                  <em>{article.headline}</em>
+                ) : (
+                  article.headline
+                )}
+              </h3>
+              {article.author ? (
+                <div
+                  className={css`
+                    text-transform: uppercase;
+                  `}
+                >
+                  By {article.author}
+                </div>
+              ) : null}
+            </div>
           </a>
         </Article>
       )}

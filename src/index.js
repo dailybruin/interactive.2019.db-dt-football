@@ -1,27 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ReactGA from "react-ga";
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import reducer from "./reducers";
 import App from "./components/App";
-
-const store = createStore(reducer);
 
 // SSR (Server Side Rendering) safe
 if (document != null) {
   // Cookies for Landing Page
-  const visited = checkVistiedCookie();
+  const visited = checkVisitedCookie();
+  console.log(visited);
   if (!visited) {
     setVisitedCookie();
   }
 
-  ReactDOM.render(
-    <Provider store={store}>
-      <App visited={visited} />
-    </Provider>,
-    document.getElementById("root")
-  );
+  ReactDOM.render(<App visited={visited} />, document.getElementById("root"));
 
   ReactGA.initialize("UA-28181852-23");
   ReactGA.pageview(window.location.pathname + window.location.search);
@@ -40,7 +31,7 @@ function setVisitedCookie() {
   document.cookie = "visited=true;" + expires + ";path=/";
 }
 
-function checkVistiedCookie() {
+function checkVisitedCookie() {
   var cookies = document.cookie.split(";");
   for (var i = 0; i < cookies.length; i++) {
     if (cookies[i].trim() == "visited=true") {
