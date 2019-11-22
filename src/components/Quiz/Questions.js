@@ -5,7 +5,7 @@ import { colors } from "../Shared/colors";
 import { mobile } from "../Shared/mediaQueries";
 import { config } from "../../config";
 
-const ANIM_LENGTH = 0.5;
+const ANIM_LENGTH = 0.15;
 
 function logAnswer(body) {
   try {
@@ -60,15 +60,20 @@ const Questions = ({ onQuizComplete, list }) => {
   }
 
   function changeQuestion(answer) {
-    logAnswer({
-      question: currentQuestion.question,
-      answer: answer == currentQuestion.answer1 ? "ucla" : "usc"
-    });
+    const res = {
+      response: [
+        {
+          question: currentQuestion.question,
+          response_value: answer == currentQuestion.answer1 ? 1 : 0
+        }
+      ]
+    };
+    logAnswer(res);
     setFadeOut(true);
     setTimeout(() => {
       setQuestions(questions.length > 0 ? questions.slice(1) : []);
       setFadeOut(false);
-    }, ANIM_LENGTH * 1000 - 0.1);
+    }, ANIM_LENGTH * 2000 - 0.1);
   }
 
   return (
@@ -83,7 +88,10 @@ const Questions = ({ onQuizComplete, list }) => {
         className={css`
           align-self: flex-end;
           cursor: pointer;
-          text-decoration: underline;
+          &:hover {
+            color: ${colors.yellow};
+          }
+          font-weight: bold;
         `}
         onClick={skipQuiz}
       >

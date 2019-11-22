@@ -1,40 +1,41 @@
 {
-    "name": "interactive.2019.db-dt-football",
-    "scripts": {
-        "start": "cross-env NODE_ENV=development parcel src/index.html",
-        "build": "cross-env NODE_ENV=production parcel build src/index.html --public-url /",
-        "build:netlify": "cross-env NODE_ENV=production parcel build src/index.html --public-url /",
-        "precommit": "lint-staged"
-    },
-    "dependencies": {
-        "@babel/preset-react": "^7.0.0",
-        "@emotion/styled": "^10.0.11",
-        "emotion": "^10.0.9",
-        "leaflet": "^1.5.1",
-        "parcel": "^1.12.3",
-        "parcel-bundler": "^1.12.3",
-        "prettier": "^1.17.1",
-        "react": ">= 16.3.0",
-        "react-dom": ">= 16.3.0",
-        "react-emotion": "^10.0.0",
-        "react-ga": "^2.7.0",
-        "react-leaflet": "^2.3.0",
-        "react-router": "^5.1.2",
-        "react-router-dom": "^5.1.2",
-        "styled-components": "^4.4.1"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.4.5",
-        "cross-env": "^5.2.0",
-        "husky": "^2.3.0",
-        "lint-staged": "^8.1.7",
-        "node-sass": "^4.12.0"
-    },
-    "license": "ITC",
-    "lint-staged": {
-        "*.{js,jsx,css}": [
-            "prettier --write",
-            "git add"
-        ]
-    }
+  "name": "interactive.2019.db-dt-football",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development parcel src/index.html",
+    "build": "cross-env NODE_ENV=production parcel build src/index.html --public-url ./",
+    "build:netlify": "cross-env NODE_ENV=production parcel build src/index.html --public-url /",
+    "precommit": "lint-staged"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "@emotion/styled": "^10.0.11",
+    "emotion": "^10.0.9",
+    "leaflet": "^1.5.1",
+    "parcel": "^1.12.3",
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^1.17.1",
+    "react": "^16.0.0",
+    "react-dom": ">= 16.3.0",
+    "react-emotion": "^10.0.0",
+    "react-ga": "^2.7.0",
+    "react-leaflet": "^2.3.0",
+    "react-magnifier": "^3.0.4",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "styled-components": "^4.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "cross-env": "^5.2.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "node-sass": "^4.12.0"
+  },
+  "license": "ITC",
+  "lint-staged": {
+    "*.{js,jsx,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }

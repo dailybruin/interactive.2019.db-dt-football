@@ -7,12 +7,9 @@ export function SubHeading({ text, explainer, ID }) {
   return (
     <div
       className={css`
-        margin-top: 2em;
-        margin-bottom: 1.5em;
         text-align: center;
-        margin: auto;
+        margin-bottom: 2em;
         ${mobile} {
-          margin-top: 1em;
           margin-bottom: 1em;
         }
       `}
@@ -23,7 +20,7 @@ export function SubHeading({ text, explainer, ID }) {
           position: relative;
           bottom: 160px;
           ${mobile} {
-            bottom: 120px;
+            bottom: 80px;
           }
         `}
       />
@@ -35,11 +32,12 @@ export function SubHeading({ text, explainer, ID }) {
           font-family: "Poppins", sans-serif;
           font-style: normal;
           text-align: center;
-          padding-top: 20px;
+          padding-top: 80px;
           padding-bottom: 0px;
           margin: 0;
           width: 100%;
           ${mobile} {
+            padding-top: 40px;
             font-size: 24px;
           }
         `}

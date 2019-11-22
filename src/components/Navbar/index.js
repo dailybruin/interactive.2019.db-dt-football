@@ -37,33 +37,40 @@ export function Navbar({ papers }) {
         }
       `}
     >
-      <h1
+      <a
+        href="/"
         className={css`
-          text-align: center;
-          margin: 0;
-          font-weight: 900;
-          font-size: 2.5rem;
-          color: ${"white"};
-          font-family: ${"Poppins"};
-          ${mobile} {
-            font-size: 1.5rem;
-          }
+          text-decoration: none;
         `}
       >
-        DAILY BRUIN
-        <span
+        <h1
           className={css`
-            font-size: 2rem;
+            text-align: center;
+            margin: 0;
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: ${"white"};
+            font-family: ${"Poppins"};
             ${mobile} {
-              font-size: 1.2rem;
+              font-size: 1.5rem;
             }
           `}
         >
-          {" "}
-          x{" "}
-        </span>
-        DAILY TROJAN
-      </h1>
+          DAILY BRUIN
+          <span
+            className={css`
+              font-size: 2rem;
+              ${mobile} {
+                font-size: 1.2rem;
+              }
+            `}
+          >
+            {" "}
+            x{" "}
+          </span>
+          DAILY TROJAN
+        </h1>
+      </a>
       <hr
         className={css`
           color: ${"white"};
@@ -97,9 +104,9 @@ export function Navbar({ papers }) {
             }
           `}
         >
-          <a href={`#poll`}>Poll</a>
-          <a href={`#timeline`}>Timeline</a>
-          <a href={`#stories`}>Stories</a>
+          <a href={`/#poll`}>Poll</a>
+          <a href={`/#timeline`}>Timeline</a>
+          <a href={`/#stories`}>Stories</a>
         </nav>
         {/* {clickables &&
           clickables.map(paper => (

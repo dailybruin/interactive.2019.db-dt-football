@@ -8,6 +8,9 @@ const Answer = ({ onClick, text }) => (
     className={css`
       font-size: 20px;
       background-color: ${colors.yellow};
+      &:hover {
+        filter: brightness(102.5%);
+      }
       border-radius: 5vw;
       padding: 12px 60px;
       color: white;
@@ -34,6 +37,9 @@ const Question = ({
         ${doFadeOut === true
           ? `opacity: 0; transition: opacity ${animLength}s;`
           : "opacity: 1;"}
+        ${doFadeOut === false
+          ? `opacity: 1; transition: opacity ${animLength}s;`
+          : "opacity: 0;"}
       `}
     >
       <h2
@@ -52,8 +58,17 @@ const Question = ({
           text-align: center;
         `}
       >
-        <Answer onClick={onClick} text={answer1} />
-        <Answer onClick={onClick} text={answer2} />
+        {Math.random() <= 0.5 ? (
+          <>
+            <Answer onClick={onClick} text={answer1} />
+            <Answer onClick={onClick} text={answer2} />
+          </>
+        ) : (
+          <>
+            <Answer onClick={onClick} text={answer2} />
+            <Answer onClick={onClick} text={answer1} />
+          </>
+        )}
       </div>
     </div>
   );

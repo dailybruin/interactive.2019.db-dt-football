@@ -12,13 +12,11 @@ const ArticleGrid = ({ papers }) => (
       grid-template-columns: repeat(2, 2fr);
       grid-gap: 20px;
       text-align: center;
-
       ${mobile} {
         padding: 0em;
         display: flex;
         flex-direction: column;
       }
-
       padding-top: 0.5em;
       padding: 0px 10%;
     `}

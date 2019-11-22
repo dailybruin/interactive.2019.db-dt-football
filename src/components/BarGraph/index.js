@@ -4,33 +4,6 @@ import { css } from "emotion";
 import QuestionHover from "../QuestionHover/QuestionHover";
 import { mobile } from "../Shared/mediaQueries";
 
-const temp_data2 = [
-  {
-    Question: "What school do you go to?",
-    Num: 1,
-    LA_Yes: 100,
-    LA_No: 80,
-    SC_Yes: 70,
-    SC_No: 30
-  },
-  {
-    Question: "What school do you go to?",
-    Num: 2,
-    SC_Yes: 100,
-    SC_No: 80,
-    LA_Yes: 70,
-    LA_No: 30
-  },
-  {
-    Question: "What school do you go to?",
-    Num: 3,
-    SC_Yes: 100,
-    SC_No: 80,
-    LA_Yes: 70,
-    LA_No: 30
-  }
-];
-
 export class BarGraph extends React.Component {
   constructor(props) {
     super(props);
@@ -57,12 +30,13 @@ export class BarGraph extends React.Component {
   render() {
     if (!this.state.responses) return null;
     const responsesArray = Object.values(this.state.responses);
+    const numResponsesArray = Object.values(this.state.num_responses);
     let total_LA = 0;
     let total_SC = 0;
     for (var i = 0; i < responsesArray.length; i++) {
       total_LA = total_LA + parseInt(responsesArray[i], 10);
       total_SC =
-        total_SC + (this.state.num_responses - parseInt(responsesArray[i], 10));
+        total_SC + (numResponsesArray[i] - parseInt(responsesArray[i], 10));
     }
     const rows = responsesArray.map((LA, index) => (
       <div
@@ -74,7 +48,7 @@ export class BarGraph extends React.Component {
         {/* insert question into the prop of this thing */}
         <QuestionHover
           numYes={LA}
-          numResponses={this.state.num_responses}
+          numResponses={numResponsesArray[index]}
           question_num={index + 1}
           question={Object.keys(this.state.responses)[index]}
         />
