@@ -78,7 +78,7 @@ export class Page extends React.Component {
         <SubHeading text="Read more here." ID="stories" />
         <div
           className={css`
-            width: 100%;
+            width: 100vw;
           `}
         >
           <ArticleGrid papers={papers} />

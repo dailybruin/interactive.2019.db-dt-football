@@ -9,7 +9,7 @@ const Section = ({ content, schoolname }) => (
       display: grid;
       grid-template-columns: repeat(1, 1fr);
       grid-gap: 20px;
-      padding: 0 2rem;
+
       ${mobile} {
         padding: 0 1rem;
       }

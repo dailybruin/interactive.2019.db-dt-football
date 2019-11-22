@@ -8,11 +8,14 @@ const ArticleGrid = ({ papers }) => (
   <div
     className={css`
       width: 100%;
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(2, 2fr);
+      grid-gap: 20px;
       text-align: center;
 
       ${mobile} {
         padding: 0em;
+        display: flex;
         flex-direction: column;
       }
 
